@@ -875,7 +875,7 @@ footer {
 
 }
 
-/* ===== NOVA NARRATIVA: FAVORITOS, PREÇOS E SOBRE NÓS ===== */
+/* ===== FAVORITOS, PREÇOS E SOBRE NÓS ===== */
 body {
   background:
     radial-gradient(ellipse at 4% 16%, rgba(255, 225, 211, 0.44), transparent 22rem),
@@ -1305,12 +1305,23 @@ footer .logo {
 }
 
 .card-dois-amores {
+  --sabor-imagem-largura: 100%;
+  --sabor-imagem-altura: 100%;
   transform: rotate(-1.1deg);
 }
 
 .card-oreo {
+  --sabor-imagem-largura: 100%;
+  --sabor-imagem-altura: 100%;
   margin-top: 1.8rem;
   transform: rotate(1.1deg);
+}
+
+/* Ajuste apenas as fotos em "Mais pedidos"; os outros sabores mantêm o corte original. */
+.grid-destaques .card-imagem img {
+  width: var(--sabor-imagem-largura);
+  height: var(--sabor-imagem-altura);
+  object-fit: contain;
 }
 
 .card-destaque:hover {
@@ -1386,6 +1397,26 @@ footer .logo {
 
 .grid-demais-sabores .card-imagem {
   aspect-ratio: 1.35;
+}
+
+.card-sabor .card-imagem::after {
+  content: "Imagem ilustrativa";
+  position: absolute;
+  right: 0.55rem;
+  bottom: 0.55rem;
+  z-index: 2;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 999px;
+  background: rgba(248, 223, 229, 0.58);
+  box-shadow: 0 3px 12px rgba(93, 49, 58, 0.2), inset 0 1px rgba(255, 255, 255, 0.55);
+  color: #813c50;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1.2;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(8px) saturate(130%);
+  backdrop-filter: blur(8px) saturate(130%);
 }
 
 .tamanhos-section {
