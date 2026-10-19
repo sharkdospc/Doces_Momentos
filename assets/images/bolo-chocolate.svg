@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 360">
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#f4e6e1"/><stop offset="1" stop-color="#dfc7c3"/></linearGradient>
+    <linearGradient id="glass" x2="1"><stop stop-color="#fff" stop-opacity=".78"/><stop offset=".28" stop-color="#fff" stop-opacity=".16"/><stop offset=".82" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity=".52"/></linearGradient>
+    <linearGradient id="choc" x2="0" y2="1"><stop stop-color="#81534b"/><stop offset="1" stop-color="#492d2d"/></linearGradient>
+    <clipPath id="jar"><path d="M133 85h134l-9 190q-1 18-19 18h-78q-18 0-19-18z"/></clipPath>
+    <filter id="shadow" x="-.3" y="-.2" width="1.6" height="1.7"><feGaussianBlur stdDeviation="12"/></filter>
+  </defs>
+  <rect width="400" height="360" rx="28" fill="url(#bg)"/>
+  <ellipse cx="200" cy="308" rx="95" ry="15" fill="#553b39" opacity=".17" filter="url(#shadow)"/>
+  <circle cx="200" cy="174" r="130" fill="#fff" opacity=".2"/>
+  <g clip-path="url(#jar)">
+    <rect x="125" y="96" width="150" height="70" fill="url(#choc)"/>
+    <rect x="125" y="166" width="150" height="55" fill="#f4dfd0"/>
+    <rect x="125" y="221" width="150" height="81" fill="#613d39"/>
+    <path d="M126 163q38-12 74 0t75 0v10q-38 12-75 0t-74 0zm0 55q38-12 74 0t75 0v10q-38 12-75 0t-74 0z" fill="#fff0df"/>
+    <path d="M150 110h100" stroke="#a87969" stroke-width="5" stroke-linecap="round" opacity=".6"/>
+    <g fill="#d6ab91"><circle cx="165" cy="255" r="3"/><circle cx="197" cy="269" r="3"/><circle cx="229" cy="251" r="3"/></g>
+  </g>
+  <path d="M133 85h134l-9 190q-1 18-19 18h-78q-18 0-19-18z" fill="url(#glass)" stroke="#fff" stroke-width="5"/>
+  <path d="M128 76q0-9 10-9h114q10 0 10 9v15H128z" fill="#9b6b62" stroke="#fff" stroke-width="4"/>
+  <path d="M145 104v137" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity=".48"/>
+  <path d="M158 61q42-27 84 0" fill="none" stroke="#fffaf6" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+</svg>
