@@ -2008,6 +2008,163 @@ footer p span {
   }
 }
 
+.fada-assistente {
+  position: fixed;
+  z-index: 120;
+  top: calc(100vh - 150px);
+  left: calc(100vw - 122px);
+  width: 112px;
+  height: 132px;
+  pointer-events: none;
+  transition: left 700ms cubic-bezier(0.22, 1, 0.36, 1), top 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fada-toque {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fada-toque:focus-visible {
+  border-radius: 44%;
+  outline: 3px solid #a94f66;
+  outline-offset: 3px;
+}
+
+.fada-desenho {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 7px 7px rgba(93, 49, 58, 0.16));
+}
+
+.fada-fala {
+  position: absolute;
+  z-index: 1;
+  right: 66%;
+  bottom: 84%;
+  width: max-content;
+  max-width: min(210px, 58vw);
+  padding: 0.6rem 0.8rem;
+  border: 1px solid rgba(184, 95, 117, 0.24);
+  border-radius: 16px 16px 4px 16px;
+  background: #fffdfb;
+  box-shadow: 0 8px 24px rgba(93, 49, 58, 0.14);
+  color: #633d49;
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.4;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(5px) scale(0.96);
+  transform-origin: bottom right;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.fada-fala::after {
+  position: absolute;
+  right: 0.4rem;
+  bottom: -0.35rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-right: 1px solid rgba(184, 95, 117, 0.24);
+  border-bottom: 1px solid rgba(184, 95, 117, 0.24);
+  background: #fffdfb;
+  content: "";
+  transform: rotate(45deg);
+}
+
+.fada-falando .fada-fala {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.fada-voando .fada-desenho {
+  animation: fada-flutuar 2.8s ease-in-out infinite;
+}
+
+.fada-voando .fada-asas {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: fada-asas 500ms ease-in-out infinite alternate;
+}
+
+.fada-voando .fada-bolo {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: fada-entregar 1.6s ease-in-out infinite;
+}
+
+@keyframes fada-flutuar {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-7px) rotate(2deg); }
+}
+
+@keyframes fada-asas {
+  from { transform: scaleX(0.9) rotate(-3deg); }
+  to { transform: scaleX(1.08) rotate(3deg); }
+}
+
+@keyframes fada-entregar {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-3px) rotate(-5deg); }
+}
+
+body[data-theme="dark"] .fada-fala {
+  border-color: rgba(240, 183, 197, 0.32);
+  background: #3b2a31;
+  color: #f7e9ed;
+}
+
+body[data-theme="dark"] .fada-fala::after {
+  border-color: rgba(240, 183, 197, 0.32);
+  background: #3b2a31;
+}
+
+body[data-theme="dark"] .fada-toque:focus-visible {
+  outline-color: #ffd5a8;
+}
+
+@media (max-width: 640px) {
+  .fada-assistente {
+    top: calc(100vh - 124px);
+    left: calc(100vw - 98px);
+    width: 88px;
+    height: 106px;
+  }
+
+  .fada-fala {
+    right: 57%;
+    bottom: 84%;
+    max-width: min(185px, 55vw);
+    font-size: 0.72rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fada-assistente,
+  .fada-fala {
+    transition: none;
+  }
+
+  .fada-voando .fada-desenho,
+  .fada-voando .fada-asas,
+  .fada-voando .fada-bolo {
+    animation: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .tamanhos-carrossel-faixa {
     animation: none !important;
