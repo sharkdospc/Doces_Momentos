@@ -2017,3 +2017,304 @@ footer p span {
     display: none;
   }
 }
+
+.whatsapp-btn {
+  cursor: pointer;
+}
+
+.whatsapp-btn:hover {
+  background: #dff2e7;
+  transform: translateY(-2px);
+}
+
+.contato-section .whatsapp-grande {
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 180ms var(--ease-out), background-color 180ms ease;
+}
+
+.contato-section .whatsapp-grande:hover {
+  background: #dff2e7;
+  transform: translateY(-2px);
+}
+
+.tema-toggle {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(184, 95, 117, 0.24);
+  border-radius: 50%;
+  background: #fff0f2;
+  color: #8f4558;
+  cursor: pointer;
+  transition: transform 180ms var(--ease-out), background-color 180ms ease, color 180ms ease;
+}
+
+.tema-toggle:hover {
+  background: #f6cbd2;
+  transform: translateY(-2px);
+}
+
+.tema-toggle:focus-visible {
+  outline: 3px solid #9e4c60;
+  outline-offset: 4px;
+}
+
+.tema-icone {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.tema-icone-sol,
+body[data-theme="dark"] .tema-icone-lua {
+  display: none;
+}
+
+body[data-theme="dark"] {
+  background: #211b1e;
+  color: #f2e7ea;
+}
+
+body[data-theme="dark"] h1,
+body[data-theme="dark"] h2,
+body[data-theme="dark"] h3,
+body[data-theme="dark"] .site-header .logo,
+body[data-theme="dark"] footer .logo,
+body[data-theme="dark"] .tamanho-card h3 {
+  color: #f7e9ed;
+}
+
+body[data-theme="dark"] header {
+  background: rgba(37, 29, 33, 0.96);
+  border-bottom-color: rgba(241, 190, 202, 0.16);
+}
+
+body[data-theme="dark"] .navegacao a,
+body[data-theme="dark"] .hero-novo .hero-conteudo > p:not(.hero-etiqueta),
+body[data-theme="dark"] .titulo-secao > p:last-child,
+body[data-theme="dark"] .tamanhos-intro > p:last-child,
+body[data-theme="dark"] .sobre-conteudo > p:not(.sobrelinha):not(.sobre-chamada):not(.sobre-nota),
+body[data-theme="dark"] .contato-section p {
+  color: #d8c5cb;
+}
+
+body[data-theme="dark"] .navegacao a:hover,
+body[data-theme="dark"] .navegacao a:focus-visible,
+body[data-theme="dark"] .link-suave,
+body[data-theme="dark"] .card-detalhes a {
+  color: #f0b7c5;
+}
+
+body[data-theme="dark"] .instagram-btn,
+body[data-theme="dark"] .tema-toggle {
+  border-color: rgba(240, 183, 197, 0.25);
+  background: #3b2a31;
+  color: #f4c3ce;
+}
+
+body[data-theme="dark"] .instagram-btn:hover,
+body[data-theme="dark"] .tema-toggle:hover {
+  background: #513640;
+}
+
+body[data-theme="dark"] .whatsapp-btn,
+body[data-theme="dark"] .contato-section .whatsapp-grande {
+  border-color: rgba(138, 211, 176, 0.3);
+  background: #263d35;
+  color: #a9e2c2;
+}
+
+body[data-theme="dark"] .whatsapp-btn:hover {
+  background: #315143;
+}
+
+body[data-theme="dark"] .tema-icone-lua {
+  display: none;
+}
+
+body[data-theme="dark"] .tema-icone-sol {
+  display: block;
+}
+
+body[data-theme="dark"] .hero-novo {
+  background:
+    radial-gradient(ellipse at 77% 48%, rgba(129, 72, 89, 0.28), transparent 34%),
+    radial-gradient(ellipse at 26% 108%, rgba(126, 91, 66, 0.2), transparent 37%),
+    linear-gradient(120deg, #211b1e 8%, #2b2025 58%, #33232a 100%);
+}
+
+body[data-theme="dark"] .hero-novo .hero-etiqueta,
+body[data-theme="dark"] .hero-selo {
+  border-color: rgba(240, 183, 197, 0.28);
+  background: #34272c;
+  color: #f2c0cc;
+}
+
+body[data-theme="dark"] .hero-novo h1 span {
+  color: #eeaabd;
+}
+
+body[data-theme="dark"] .hero-rolagem,
+body[data-theme="dark"] .tamanhos-nota {
+  color: #c9adb5;
+}
+
+body[data-theme="dark"] .mais-pedidos,
+body[data-theme="dark"] .sabores-section {
+  background: #251e21;
+}
+
+body[data-theme="dark"] .card-destaque,
+body[data-theme="dark"] .card-sabor {
+  border-color: rgba(240, 183, 197, 0.16);
+  background: #30272b;
+}
+
+body[data-theme="dark"] .sabor-nome,
+body[data-theme="dark"] .card-detalhes p,
+body[data-theme="dark"] .sabor-desc {
+  color: #f0e2e6;
+}
+
+body[data-theme="dark"] .card-sabor .sabor-nome {
+  color: #f0e2e6;
+}
+
+body[data-theme="dark"] .card-sabor .sabor-desc,
+body[data-theme="dark"] .card-indicacao {
+  color: #e4bac5;
+}
+
+body[data-theme="dark"] .sabor-edicao,
+body[data-theme="dark"] .sobre-chamada {
+  color: #e5aaba;
+}
+
+body[data-theme="dark"] .card-detalhes {
+  border-top-color: rgba(240, 183, 197, 0.18);
+}
+
+body[data-theme="dark"] .selo-favorito {
+  border-color: rgba(240, 183, 197, 0.25);
+  background: rgba(48, 37, 42, 0.95);
+  color: #f2c0cc;
+}
+
+body[data-theme="dark"] .card-sabor .card-imagem::after {
+  border-color: rgba(240, 183, 197, 0.3);
+  background: rgba(48, 37, 42, 0.88);
+  color: #f5d8e0;
+}
+
+body[data-theme="dark"] .tamanhos-section {
+  background:
+    radial-gradient(ellipse at 18% 92%, rgba(126, 91, 66, 0.2), transparent 24rem),
+    radial-gradient(ellipse at 90% 8%, rgba(133, 73, 92, 0.27), transparent 25rem),
+    #302328;
+}
+
+body[data-theme="dark"] .tamanho-card,
+body[data-theme="dark"] .tamanho-grande {
+  border-color: rgba(240, 183, 197, 0.2);
+  background: rgba(55, 43, 48, 0.94);
+}
+
+body[data-theme="dark"] .tamanho-legenda {
+  color: #d0b3bb;
+}
+
+body[data-theme="dark"] .tamanho-card h3 span,
+body[data-theme="dark"] .tamanho-preco {
+  color: #f0b7c5;
+}
+
+body[data-theme="dark"] .tamanho-icone {
+  background: #49313a;
+  color: #f0b7c5;
+}
+
+body[data-theme="dark"] .icone-coracao::before {
+  border-color: #f0b7c5;
+}
+
+body[data-theme="dark"] .icone-estrela::before {
+  background: #f0b7c5;
+}
+
+body[data-theme="dark"] .tamanho-selo {
+  background: #49313a;
+  color: #f2c0cc;
+}
+
+body[data-theme="dark"] .sobre-foto-moldura {
+  border-color: rgba(240, 183, 197, 0.25);
+  background: linear-gradient(145deg, #49313a, #493c32 75%);
+}
+
+body[data-theme="dark"] .contato-section {
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.04), transparent 15rem),
+    linear-gradient(135deg, #38272e, #352c27);
+}
+
+body[data-theme="dark"] .contato-conteudo h2 {
+  color: #f7e9ed;
+}
+
+body[data-theme="dark"] .contato-section .sobrelinha {
+  color: #f0b7c5;
+}
+
+body[data-theme="dark"] footer {
+  background: #302429;
+}
+
+body[data-theme="dark"] footer p {
+  color: #d3b9c0;
+}
+
+body[data-theme="dark"] .instagram-btn:focus-visible,
+body[data-theme="dark"] .whatsapp-btn:focus-visible,
+body[data-theme="dark"] .whatsapp-grande:focus-visible,
+body[data-theme="dark"] .tema-toggle:focus-visible,
+body[data-theme="dark"] .btn-principal:focus-visible,
+body[data-theme="dark"] .instagram-grande:focus-visible,
+body[data-theme="dark"] .card-resumo:focus-visible {
+  outline-color: #ffd5a8;
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    gap: 0.5rem 0.45rem;
+    padding: 0.65rem 4%;
+  }
+
+  .site-header .logo {
+    gap: 0.35rem;
+    font-size: 1rem;
+  }
+
+  .site-header .logo-marca {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  .site-header .tema-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .site-header .whatsapp-btn,
+  .site-header .instagram-btn {
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+  }
+}

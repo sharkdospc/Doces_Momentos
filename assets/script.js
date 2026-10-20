@@ -5,6 +5,23 @@
 (function () {
   'use strict';
 
+  const temaToggle = document.querySelector('.tema-toggle');
+  const temaSalvo = localStorage.getItem('doces-momentos-tema');
+
+  function aplicarTemaEscuro(escuro) {
+    document.body.dataset.theme = escuro ? 'dark' : 'light';
+    temaToggle.setAttribute('aria-pressed', String(escuro));
+    temaToggle.setAttribute('aria-label', escuro ? 'Ativar tema claro' : 'Ativar tema escuro');
+    temaToggle.title = escuro ? 'Ativar tema claro' : 'Ativar tema escuro';
+  }
+
+  aplicarTemaEscuro(temaSalvo === 'dark');
+  temaToggle.addEventListener('click', () => {
+    const escuro = document.body.dataset.theme !== 'dark';
+    aplicarTemaEscuro(escuro);
+    localStorage.setItem('doces-momentos-tema', escuro ? 'dark' : 'light');
+  });
+
   /* Smooth scroll para links internos, respeitando redução de movimento. */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
