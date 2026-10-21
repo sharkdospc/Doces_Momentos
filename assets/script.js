@@ -335,7 +335,6 @@
   };
 
   let idiomaAtivo = 'pt-BR';
-
   function aplicarIdioma(codigo) {
     const dicionario = traducoes[codigo] || {};
     const idiomaDocumento = codigo === 'pt-BR' ? 'pt-BR' : codigo;
