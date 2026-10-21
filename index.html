@@ -11,8 +11,19 @@
 
   <link rel="icon" href="imagem/logo.jpeg" type="image/jpeg">
   <link rel="apple-touch-icon" href="imagem/logo.jpeg">
+  <noscript><style>.entrada-site { display: none; }</style></noscript>
 </head>
 <body>
+  <div class="entrada-site" aria-label="Abertura da Doces Momentos">
+    <div class="entrada-conteudo">
+      <div class="entrada-simbolo">
+        <img class="entrada-logo" src="imagem/logo.jpeg" alt="Logo Doces Momentos">
+      </div>
+      <p class="entrada-assinatura">feito com carinho, para adoçar seu dia</p>
+      <button class="entrada-pular" type="button">Pular abertura</button>
+    </div>
+  </div>
+
   <header class="site-header">
     <a class="logo" href="#inicio" aria-label="Doces Momentos, início">
       <!-- Substitua o SVG por sua logo quando estiver disponível. -->
@@ -49,6 +60,15 @@
         <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
       </svg>
     </button>
+    <div class="idioma-controle">
+      <button class="idioma-toggle" type="button" data-idioma-curto="PT" aria-expanded="false" aria-controls="idioma-opcoes" aria-label="Selecionar idioma do site" title="Selecionar idioma do site">Idioma: PT</button>
+      <div class="idioma-opcoes" id="idioma-opcoes" hidden role="group" aria-label="Idioma do site">
+        <button type="button" data-idioma="pt-BR" lang="pt-BR" aria-pressed="true">Português</button>
+        <button type="button" data-idioma="en" lang="en" aria-pressed="false">English</button>
+        <button type="button" data-idioma="es" lang="es" aria-pressed="false">Español</button>
+        <button type="button" data-idioma="zh-CN" lang="zh-CN" aria-pressed="false">中文</button>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -270,9 +290,9 @@
     <p>Feito com carinho para todos os amantes de bolos</p>
   </footer>
 
-  <aside class="fada-assistente fada-falando" aria-label="Fada Mel, guia do site">
-    <p class="fada-fala" role="status" aria-live="polite" aria-atomic="true">Oi! Sou a Mel. Vamos descobrir nossos docinhos?</p>
-    <button class="fada-toque" type="button" aria-label="Ouvir uma dica de navegação da fada Mel" title="Toque para ouvir uma dica">
+  <aside class="fada-assistente" aria-label="Fada Gigica, guia do site">
+    <p class="fada-fala" role="status" aria-live="polite" aria-atomic="true">Oi! Sou a Fada Gigica. Vamos descobrir nossos docinhos?</p>
+    <button class="fada-toque" type="button" aria-label="Ouvir uma dica de navegação da Fada Gigica" title="Toque para ouvir uma dica da Fada Gigica">
       <svg class="fada-desenho" viewBox="0 0 140 170" aria-hidden="true" focusable="false">
         <defs>
           <linearGradient id="asa-fada" x1="0" y1="0" x2="1" y2="1">

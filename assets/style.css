@@ -458,6 +458,7 @@ footer {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 #sabores {
@@ -1006,9 +1007,11 @@ footer .logo {
   right: 19%;
   width: min(55vw, 640px);
   height: min(55vw, 640px);
-  border: 1px solid rgba(184, 95, 117, 0.1);
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.42) 0 45%, transparent 46%);
-  opacity: 1;
+  background:
+    radial-gradient(ellipse at 44% 42%, rgba(255, 255, 255, 0.66), transparent 53%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.26), transparent 70%);
+  opacity: 0.85;
+  animation: hero-fundo-suave 28s ease-in-out infinite alternate;
 }
 
 .hero-novo::after {
@@ -1098,12 +1101,12 @@ footer .logo {
   position: relative;
   z-index: 1;
   display: grid;
-  width: min(38vw, 430px);
+  width: min(43vw, 500px);
   min-width: 300px;
   aspect-ratio: 1;
   place-items: center;
   margin: 0 3% 1.5rem 2rem;
-  border: 1px solid rgba(184, 95, 117, 0.16);
+  border: 0;
   border-radius: 44% 56% 56% 44% / 48% 43% 57% 52%;
   background:
     radial-gradient(circle at 55% 38%, rgba(255, 255, 255, 0.82), rgba(255, 241, 237, 0.72) 55%, rgba(249, 215, 218, 0.42));
@@ -1113,9 +1116,9 @@ footer .logo {
 
 .hero-logo-destaque {
   display: block;
-  width: 82%;
-  height: 82%;
-  border: 7px solid rgba(255, 255, 255, 0.78);
+  width: 88%;
+  height: 88%;
+  border: 5px solid rgba(255, 255, 255, 0.82);
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 24px 46px -25px rgba(110, 43, 69, 0.48);
@@ -1804,7 +1807,7 @@ footer p span {
   }
 
   .hero-ilustracao {
-    width: 34vw;
+    width: min(40vw, 420px);
     min-width: 230px;
     margin-right: 0;
   }
@@ -2177,6 +2180,439 @@ body[data-theme="dark"] .fada-toque:focus-visible {
 
 .whatsapp-btn {
   cursor: pointer;
+}
+
+/* ===== ABERTURA, REVELAÇÃO E AMBIENTE ===== */
+:root {
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+body {
+  isolation: isolate;
+}
+
+body::before {
+  position: fixed;
+  z-index: -1;
+  inset: -2%;
+  background:
+    radial-gradient(ellipse at 18% 22%, rgba(246, 203, 210, 0.2), transparent 40%),
+    radial-gradient(ellipse at 82% 76%, rgba(255, 227, 206, 0.2), transparent 42%);
+  content: "";
+  pointer-events: none;
+  animation: ambiente-suave 32s ease-in-out infinite alternate;
+}
+
+.entrada-site {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(255, 255, 255, 0.9), transparent 30rem),
+    linear-gradient(145deg, #fffaf6, #f8e5e7);
+  color: #52383b;
+  opacity: 1;
+  transition: opacity 360ms var(--ease-out), visibility 360ms var(--ease-out);
+}
+
+.entrada-site::before {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(164, 83, 103, 0.13) 0.7px, transparent 0.7px);
+  background-size: 22px 22px;
+  content: "";
+  mask-image: linear-gradient(transparent, #000 35%, #000 65%, transparent);
+  opacity: 0.28;
+}
+
+.entrada-site.entrada-saindo {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.entrada-conteudo {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: min(88vw, 360px);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.entrada-simbolo {
+  position: relative;
+  display: grid;
+  width: clamp(190px, 38vw, 258px);
+  aspect-ratio: 1;
+  place-items: center;
+}
+
+.entrada-logo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 74%;
+  aspect-ratio: 1;
+  border: 8px solid rgba(255, 255, 255, 0.88);
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 24px 62px -28px rgba(94, 48, 57, 0.48);
+  animation: entrada-logo 720ms var(--ease-out) both;
+}
+
+.entrada-orbita {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(184, 95, 117, 0.22);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.entrada-orbita-externa {
+  width: 100%;
+  animation: orbita-entrada 1800ms ease-out both;
+}
+
+.entrada-orbita-interna {
+  width: 86%;
+  border-style: dashed;
+  border-color: rgba(184, 95, 117, 0.17);
+  animation: orbita-entrada 1800ms ease-out 100ms both;
+}
+
+.entrada-assinatura {
+  margin-top: 1.65rem;
+  color: #9e4c60;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.9rem, 3vw, 1.05rem);
+  font-style: italic;
+  letter-spacing: 0.02em;
+  animation: entrada-texto 600ms var(--ease-out) 260ms both;
+}
+
+.entrada-pular {
+  margin-top: 2rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(158, 76, 96, 0.25);
+  border-radius: 99px;
+  background: rgba(255, 253, 251, 0.72);
+  color: #80505b;
+  font: inherit;
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.entrada-pular:hover,
+.entrada-pular:focus-visible {
+  background: #fffdfb;
+  color: #9e4c60;
+}
+
+.entrada-pular:focus-visible {
+  outline: 3px solid #9e4c60;
+  outline-offset: 3px;
+}
+
+html.js .revelar-rolagem {
+  clip-path: inset(0 0 100% 0);
+  opacity: 0;
+  transition:
+    clip-path 640ms var(--ease-in-out),
+    opacity 500ms var(--ease-out);
+  transition-delay: var(--atraso-revelacao, 0ms);
+}
+
+html.js .revelar-rolagem[data-visivel] {
+  clip-path: inset(0);
+  opacity: 1;
+}
+
+.card-sabor.revelar-rolagem {
+  animation: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .grid-sabores .card-sabor:hover {
+    box-shadow: 0 24px 54px -28px rgba(157, 74, 94, 0.42);
+  }
+
+  .grid-sabores .card-sabor:hover .card-imagem img {
+    transform: scale(1.035);
+  }
+}
+
+@keyframes entrada-logo {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes entrada-texto {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes orbita-entrada {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-18deg) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0) scale(1);
+  }
+}
+
+@keyframes ambiente-suave {
+  from {
+    transform: translate3d(-0.35%, -0.25%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(0.35%, 0.25%, 0) scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  .entrada-site *,
+  .entrada-site::before,
+  .entrada-orbita {
+    animation: none !important;
+  }
+
+  .entrada-site {
+    display: none;
+  }
+
+  html.js .revelar-rolagem,
+  html.js .revelar-rolagem[data-visivel] {
+    clip-path: none;
+    opacity: 1;
+    transition: none;
+  }
+}
+
+body[data-theme="dark"] .entrada-site {
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(70, 48, 57, 0.9), transparent 30rem),
+    linear-gradient(145deg, #211b1e, #33232a);
+  color: #f7e9ed;
+}
+
+body[data-theme="dark"] .entrada-assinatura {
+  color: #f0b7c5;
+}
+
+body[data-theme="dark"] .entrada-pular {
+  border-color: rgba(240, 183, 197, 0.25);
+  background: rgba(59, 42, 49, 0.82);
+  color: #f4c3ce;
+}
+
+body[data-theme="dark"]::before {
+  background:
+    radial-gradient(ellipse at 18% 22%, rgba(129, 72, 89, 0.2), transparent 40%),
+    radial-gradient(ellipse at 82% 76%, rgba(126, 91, 66, 0.14), transparent 42%);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .entrada-site {
+    background: #fffaf6;
+  }
+}
+
+.site-header {
+  border-bottom: 0;
+}
+
+.entrada-site::before {
+  content: none;
+}
+
+html.js .revelar-rolagem {
+  transition:
+    clip-path 900ms var(--ease-in-out),
+    opacity 850ms var(--ease-out);
+}
+
+.card-detalhes p {
+  padding-top: 0.6rem;
+  border-top: 0;
+}
+
+.hero-novo::before {
+  will-change: transform;
+}
+
+@keyframes hero-fundo-suave {
+  from {
+    transform: translate3d(-1.2%, -0.5%, 0) scale(0.98);
+  }
+  to {
+    transform: translate3d(1.5%, 0.8%, 0) scale(1.04);
+  }
+}
+
+.idioma-controle {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+}
+
+.idioma-toggle {
+  min-height: 42px;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgba(184, 95, 117, 0.24);
+  border-radius: 999px;
+  background: #fff0f2;
+  color: #8f4558;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.idioma-toggle:hover,
+.idioma-toggle[aria-expanded="true"] {
+  background: #f6cbd2;
+}
+
+.idioma-toggle:focus-visible,
+.idioma-opcoes button:focus-visible {
+  outline: 3px solid #9e4c60;
+  outline-offset: 3px;
+}
+
+.idioma-opcoes {
+  position: absolute;
+  top: calc(100% + 0.55rem);
+  right: 0;
+  display: grid;
+  min-width: 176px;
+  gap: 0.2rem;
+  padding: 0.45rem;
+  border: 1px solid rgba(184, 95, 117, 0.16);
+  border-radius: 16px;
+  background: rgba(255, 253, 251, 0.97);
+  box-shadow: 0 14px 34px -18px rgba(93, 49, 58, 0.44);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.idioma-opcoes[hidden] {
+  display: none;
+}
+
+.idioma-opcoes button {
+  min-height: 42px;
+  padding: 0.6rem 0.75rem;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #63474d;
+  font: inherit;
+  font-size: 0.82rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.idioma-opcoes button:hover,
+.idioma-opcoes button[aria-pressed="true"] {
+  background: #fff0f2;
+  color: #8f4558;
+}
+
+html[lang="en"] .card-sabor .card-imagem::after {
+  content: "Image for illustration";
+}
+
+html[lang="es"] .card-sabor .card-imagem::after {
+  content: "Imagen ilustrativa";
+}
+
+html[lang="zh-CN"] .card-sabor .card-imagem::after {
+  content: "示意图片";
+}
+
+body[data-theme="dark"] .idioma-toggle {
+  border-color: rgba(240, 183, 197, 0.25);
+  background: #3b2a31;
+  color: #f4c3ce;
+}
+
+body[data-theme="dark"] .idioma-toggle:hover,
+body[data-theme="dark"] .idioma-toggle[aria-expanded="true"] {
+  background: #513640;
+}
+
+body[data-theme="dark"] .idioma-opcoes {
+  border-color: rgba(240, 183, 197, 0.2);
+  background: rgba(48, 37, 42, 0.97);
+}
+
+body[data-theme="dark"] .idioma-opcoes button {
+  color: #f0e2e6;
+}
+
+body[data-theme="dark"] .idioma-opcoes button:hover,
+body[data-theme="dark"] .idioma-opcoes button[aria-pressed="true"] {
+  background: #49313a;
+  color: #f4c3ce;
+}
+
+body[data-theme="dark"] .hero-novo::before {
+  background:
+    radial-gradient(ellipse at 44% 42%, rgba(255, 255, 255, 0.12), transparent 53%),
+    radial-gradient(circle, rgba(129, 72, 89, 0.2), transparent 70%);
+}
+
+@media (max-width: 640px) {
+  .idioma-toggle {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+    padding: 0;
+    font-size: 0;
+  }
+
+  .idioma-toggle::after {
+    content: attr(data-idioma-curto);
+    font-size: 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-novo::before {
+    animation: none;
+    will-change: auto;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  body[data-theme="dark"] .entrada-site {
+    background: #211b1e;
+  }
 }
 
 .whatsapp-btn:hover {
