@@ -444,23 +444,12 @@
   });
 
   if (introducao) {
-    const pularIntroducao = introducao.querySelector('.entrada-pular');
-    let encerramentoIntroducao;
+    const duracaoMinima = movimentoReduzido.matches ? 1000 : 1500;
 
-    function encerrarIntroducao() {
-      if (!introducao.isConnected || introducao.classList.contains('entrada-saindo')) return;
-
-      window.clearTimeout(encerramentoIntroducao);
+    window.setTimeout(() => {
       introducao.classList.add('entrada-saindo');
       window.setTimeout(() => introducao.remove(), 360);
-    }
-
-    if (movimentoReduzido.matches) {
-      introducao.remove();
-    } else {
-      pularIntroducao.addEventListener('click', encerrarIntroducao);
-      encerramentoIntroducao = window.setTimeout(encerrarIntroducao, 2400);
-    }
+    }, duracaoMinima);
   }
 
   const elementosRevelados = document.querySelectorAll(
@@ -524,10 +513,7 @@
     'Já escolheu o tamanho do seu carinho?',
     'Uma encomenda gostosa está a um toque de distância!'
   ];
-  let alvoFada = null;
   let falaTimeout;
-  let framePendente = false;
-  let ultimaFala = 0;
   let indiceFala = 0;
 
   function mostrarFalaFada(mensagem) {
@@ -539,130 +525,318 @@
     }, 6000);
   }
 
-  function mensagemDoAlvo(alvo) {
-    if (alvo.matches('.whatsapp-btn, .whatsapp-grande')) {
-      return 'Sua encomenda está a um toque de distância!';
-    }
-
-    if (alvo.matches('.instagram-btn, .instagram-grande')) {
-      return 'Venha conhecer mais do nosso cantinho!';
-    }
-
-    if (alvo.matches('.tema-toggle')) {
-      return 'Você pode mudar as cores do site por aqui.';
-    }
-
-    const destino = alvo.getAttribute('href');
-    if (destino === '#sabores' || alvo.closest('.card-sabor')) {
-      return 'Toque em um potinho para descobrir mais!';
-    }
-    if (destino === '#tamanhos' || alvo.closest('.tamanho-card')) {
-      return 'Vamos encontrar o tamanho ideal para você!';
-    }
-    if (destino === '#contato') {
-      return 'Prontinha para ajudar com sua encomenda!';
-    }
-
-    return falasFada[indiceFala++ % falasFada.length];
-  }
-
-  function posicionarFada(alvo) {
-    if (!alvo || !alvo.isConnected) return;
-
-    const caixaAlvo = alvo.getBoundingClientRect();
-    if (caixaAlvo.width === 0 || caixaAlvo.height === 0) return;
-
-    const largura = fada.offsetWidth;
-    const altura = fada.offsetHeight;
-    const margem = 10;
-    const espacoEsquerdo = caixaAlvo.left - largura - 12;
-    const espacoDireito = caixaAlvo.right + 12;
-    const cabeAoLado = espacoEsquerdo >= margem || espacoDireito + largura <= window.innerWidth - margem;
-    let esquerda = espacoEsquerdo >= margem ? espacoEsquerdo : espacoDireito;
-    let topo = caixaAlvo.top + caixaAlvo.height / 2 - altura / 2;
-
-    if (!cabeAoLado) {
-      esquerda = caixaAlvo.left + caixaAlvo.width / 2 - largura / 2;
-      topo = caixaAlvo.top >= altura + 70
-        ? caixaAlvo.top - altura - 12
-        : caixaAlvo.bottom + 12;
-    }
-
-    esquerda = Math.max(margem, Math.min(esquerda, window.innerWidth - largura - margem));
-    topo = Math.max(58, Math.min(
-      topo,
-      window.innerHeight - altura - margem
-    ));
-
-    fada.style.left = `${esquerda}px`;
-    fada.style.top = `${topo}px`;
-    fada.classList.toggle('fada-voando', !movimentoReduzido.matches);
-  }
-
-  function buscarAlvoVisivel() {
-    const referencia = window.innerHeight * 0.56;
-    const candidatos = document.querySelectorAll(
-      '.navegacao a, .hero-acoes a, .hero-rolagem, .card-resumo, .card-detalhes a, ' +
-      '.tamanho-card > a, .sobre-conteudo a, .contato-links a, .whatsapp-btn, .instagram-btn'
-    );
-    let maisProximo = null;
-    let menorDistancia = Infinity;
-
-    candidatos.forEach(candidato => {
-      const caixa = candidato.getBoundingClientRect();
-      if (caixa.width === 0 || caixa.height === 0 || caixa.bottom < 0 || caixa.top > window.innerHeight) return;
-
-      const distancia = Math.abs(caixa.top + caixa.height / 2 - referencia);
-      if (distancia < menorDistancia) {
-        menorDistancia = distancia;
-        maisProximo = candidato;
-      }
-    });
-
-    return maisProximo;
-  }
-
-  function atualizarFada() {
-    framePendente = false;
-    alvoFada = buscarAlvoVisivel();
-    if (alvoFada) posicionarFada(alvoFada);
-  }
-
-  function agendarAtualizacaoFada() {
-    if (framePendente) return;
-    framePendente = true;
-    window.requestAnimationFrame(atualizarFada);
-  }
-
-  function seguirAlvoFada(alvo, falar) {
-    if (!alvo || fada.contains(alvo)) return;
-    alvoFada = alvo;
-    posicionarFada(alvo);
-
-    const agora = Date.now();
-    if (falar && agora - ultimaFala > 7000) {
-      mostrarFalaFada(mensagemDoAlvo(alvo));
-      ultimaFala = agora;
-    }
-  }
-
-  document.addEventListener('pointerover', evento => {
-    const alvo = evento.target.closest('a[href], button, summary');
-    if (alvo && !fada.contains(alvo)) seguirAlvoFada(alvo, true);
-  });
-
-  document.addEventListener('focusin', evento => {
-    const alvo = evento.target.closest('a[href], button, summary');
-    if (alvo && !fada.contains(alvo)) seguirAlvoFada(alvo, true);
-  });
-
   fadaBotao.addEventListener('click', () => {
     mostrarFalaFada(falasFada[indiceFala++ % falasFada.length]);
   });
 
-  window.addEventListener('scroll', agendarAtualizacaoFada, { passive: true });
-  window.addEventListener('resize', agendarAtualizacaoFada);
-  movimentoReduzido.addEventListener('change', agendarAtualizacaoFada);
+  const formularioAvaliacao = document.querySelector('#avaliacao-form');
+  formularioAvaliacao.addEventListener('submit', evento => {
+    evento.preventDefault();
+    const avaliacao = new FormData(formularioAvaliacao);
+    const estrelas = avaliacao.get('rating');
+    const comentario = String(avaliacao.get('comment') || '').trim();
+    const assunto = encodeURIComponent('Avaliação ou mensagem pelo site Doces Momentos');
+    const corpo = encodeURIComponent(`Avaliação: ${estrelas} de 5 estrelas\n\nMensagem:\n${comentario}`);
+    window.location.href = `mailto:carloshenriquemichalak3@gmail.com?subject=${assunto}&body=${corpo}`;
+  });
+
+  const opcoesEstrelas = [...formularioAvaliacao.querySelectorAll('input[name="rating"]')];
+  const caminhoEstrela = formularioAvaliacao.querySelector('label[for="rating-1"] path').getAttribute('d');
+  formularioAvaliacao.querySelectorAll('.radio path').forEach(caminho => {
+    caminho.setAttribute('d', caminhoEstrela);
+  });
+
+  function atualizarEstrelas(valor) {
+    opcoesEstrelas.forEach(opcao => {
+      const rotulo = formularioAvaliacao.querySelector(`label[for="${opcao.id}"]`);
+      rotulo.classList.toggle('rating-highlight', Number(opcao.value) <= Number(valor));
+    });
+  }
+  opcoesEstrelas.forEach(opcao => {
+    opcao.addEventListener('change', () => atualizarEstrelas(opcao.value));
+  });
+
+  const adminDialog = document.querySelector('#admin-dialog');
+  const adminLogin = document.querySelector('#admin-login');
+  const adminPainel = document.querySelector('#admin-painel');
+  const adminLoginForm = document.querySelector('#admin-login-form');
+  const adminLoginMensagem = document.querySelector('#admin-login-mensagem');
+  const adminProdutosForm = document.querySelector('#admin-produtos-form');
+  const adminProdutosLista = document.querySelector('#admin-produtos-lista');
+  const adminStatus = document.querySelector('#admin-status');
+  const adminAdicionar = document.querySelector('#admin-adicionar');
+  const chaveProdutos = 'doces-momentos-produtos';
+  const senhaAdministrativa = '140824';
+  const cartoesIniciais = [...document.querySelectorAll('.grid-sabores .card-sabor')];
+
+  function textoOriginalDo(elemento) {
+    const entrada = textosOriginais.find(([noTexto]) => noTexto.parentElement === elemento);
+    return entrada ? entrada[1].trim() : elemento.textContent.trim();
+  }
+
+  const produtosIniciais = cartoesIniciais.map((cartao, indice) => ({
+    id: `produto-${indice}`,
+    nome: textoOriginalDo(cartao.querySelector('.sabor-nome')),
+    descricao: textoOriginalDo(cartao.querySelector('.sabor-desc')),
+    detalhes: textoOriginalDo(cartao.querySelector('.card-detalhes p')),
+    imagem: cartao.querySelector('.card-imagem img').getAttribute('src'),
+    personalizado: false
+  }));
+  let produtos = produtosIniciais;
+
+  try {
+    const produtosSalvos = JSON.parse(localStorage.getItem(chaveProdutos) || 'null');
+    if (Array.isArray(produtosSalvos)) {
+      const produtosSalvosPorId = new Map(produtosSalvos
+        .filter(produto => produto && typeof produto.id === 'string' &&
+          typeof produto.nome === 'string' && typeof produto.descricao === 'string' &&
+          typeof produto.imagem === 'string')
+        .map(produto => [produto.id, produto]));
+      produtos = produtosIniciais
+        .map(produto => ({ ...produto, ...produtosSalvosPorId.get(produto.id) }))
+        .concat(produtosSalvos.filter(produto =>
+          produto && produto.personalizado === true &&
+          typeof produto.id === 'string' && typeof produto.nome === 'string' &&
+          typeof produto.descricao === 'string' && typeof produto.imagem === 'string'
+        ));
+    }
+  } catch (erro) {
+    console.error('Não foi possível carregar os sabores salvos neste navegador.', erro);
+    adminStatus.textContent = 'Não foi possível ler os sabores salvos. Verifique o armazenamento do navegador.';
+  }
+
+  function criarCartaoPersonalizado(produto) {
+    const cartao = document.createElement('details');
+    cartao.className = 'card-sabor';
+    cartao.dataset.productId = produto.id;
+    cartao.dataset.customProduct = '';
+
+    const resumo = document.createElement('summary');
+    resumo.className = 'card-resumo';
+    const imagemArea = document.createElement('div');
+    imagemArea.className = 'card-imagem';
+    const imagem = document.createElement('img');
+    imagem.loading = 'lazy';
+    imagemArea.append(imagem);
+
+    const conteudo = document.createElement('div');
+    conteudo.className = 'card-conteudo';
+    const nome = document.createElement('div');
+    nome.className = 'sabor-nome';
+    const descricao = document.createElement('div');
+    descricao.className = 'sabor-desc';
+    const indicacao = document.createElement('span');
+    indicacao.className = 'card-indicacao';
+    indicacao.textContent = 'descobrir o sabor +';
+    conteudo.append(nome, descricao, indicacao);
+    resumo.append(imagemArea, conteudo);
+
+    const detalhes = document.createElement('div');
+    detalhes.className = 'card-detalhes';
+    const textoDetalhes = document.createElement('p');
+    const link = document.createElement('a');
+    link.href = '#tamanhos';
+    link.textContent = 'Escolher meu tamanho';
+    detalhes.append(textoDetalhes, link);
+    cartao.append(resumo, detalhes);
+    document.querySelector('.grid-demais-sabores').append(cartao);
+    return cartao;
+  }
+
+  function aplicarProdutos() {
+    document.querySelectorAll('[data-custom-product]').forEach(cartao => cartao.remove());
+    produtos.forEach((produto, indice) => {
+      const cartao = produto.personalizado
+        ? criarCartaoPersonalizado(produto)
+        : cartoesIniciais[Number(produto.id.replace('produto-', ''))];
+      if (!cartao) return;
+
+      cartao.dataset.productId = produto.id;
+      cartao.querySelector('.sabor-nome').textContent = produto.nome;
+      cartao.querySelector('.sabor-desc').textContent = produto.descricao;
+      const imagem = cartao.querySelector('.card-imagem img');
+      imagem.src = produto.imagem;
+      imagem.alt = `Bolo de pote ${produto.nome}`;
+      cartao.querySelector('.card-detalhes p').textContent = produto.detalhes || produto.descricao;
+    });
+  }
+
+  function criarCampoProduto(rotulo, classe, tipo, valor, identificador) {
+    const campo = document.createElement(tipo === 'textarea' ? 'textarea' : 'input');
+    campo.className = classe;
+    campo.id = identificador;
+    if (tipo !== 'textarea') campo.type = tipo;
+    else campo.rows = 2;
+    if (tipo !== 'file') campo.value = valor;
+    else campo.accept = 'image/*';
+    campo.required = tipo !== 'file';
+    const label = document.createElement('label');
+    label.htmlFor = identificador;
+    label.textContent = rotulo;
+    return { campo, label };
+  }
+
+  function mostrarProdutosNoPainel() {
+    adminProdutosLista.replaceChildren();
+    produtos.forEach((produto, indice) => {
+      const item = document.createElement('fieldset');
+      item.className = 'admin-produto';
+      item.dataset.productId = produto.id;
+      const legenda = document.createElement('legend');
+      legenda.textContent = produto.nome;
+      item.append(legenda);
+      const nome = criarCampoProduto('Nome', 'admin-produto-nome', 'text', produto.nome, `admin-nome-${indice}`);
+      const descricao = criarCampoProduto('Descrição', 'admin-produto-descricao', 'textarea', produto.descricao, `admin-descricao-${indice}`);
+      const imagem = criarCampoProduto('Trocar imagem', 'admin-produto-imagem', 'file', '', `admin-imagem-${indice}`);
+      item.append(nome.label, nome.campo, descricao.label, descricao.campo, imagem.label, imagem.campo);
+      adminProdutosLista.append(item);
+    });
+  }
+
+  function salvarProdutos(atualizados) {
+    try {
+      localStorage.setItem(chaveProdutos, JSON.stringify(atualizados));
+    } catch (erro) {
+      console.error('Não foi possível salvar as alterações dos sabores.', erro);
+      adminStatus.textContent = 'Não foi possível salvar: o armazenamento do navegador pode estar cheio.';
+      return false;
+    }
+
+    produtos = atualizados;
+    aplicarProdutos();
+    mostrarProdutosNoPainel();
+    adminStatus.textContent = 'Alterações salvas neste navegador.';
+    return true;
+  }
+
+  function converterImagem(arquivo) {
+    if (!arquivo || !arquivo.type.startsWith('image/')) {
+      return Promise.reject(new Error('Selecione um arquivo de imagem válido.'));
+    }
+    if (arquivo.size > 5 * 1024 * 1024) {
+      return Promise.reject(new Error('A imagem deve ter no máximo 5 MB.'));
+    }
+
+    const urlTemporaria = URL.createObjectURL(arquivo);
+    return new Promise((resolve, reject) => {
+      const imagem = new Image();
+      imagem.onload = () => {
+        URL.revokeObjectURL(urlTemporaria);
+        const escala = Math.min(1, 1000 / Math.max(imagem.naturalWidth, imagem.naturalHeight));
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.max(1, Math.round(imagem.naturalWidth * escala));
+        canvas.height = Math.max(1, Math.round(imagem.naturalHeight * escala));
+        const contexto = canvas.getContext('2d');
+        if (!contexto) {
+          reject(new Error('Não foi possível processar a imagem neste navegador.'));
+          return;
+        }
+        contexto.drawImage(imagem, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL('image/jpeg', 0.82));
+      };
+      imagem.onerror = () => {
+        URL.revokeObjectURL(urlTemporaria);
+        reject(new Error('Não foi possível abrir a imagem selecionada.'));
+      };
+      imagem.src = urlTemporaria;
+    });
+  }
+
+  document.querySelector('#admin-abrir').addEventListener('click', () => {
+    adminLogin.hidden = false;
+    adminPainel.hidden = true;
+    adminLoginMensagem.textContent = '';
+    adminDialog.showModal();
+    document.querySelector('#admin-senha').focus();
+  });
+
+  document.querySelector('#admin-fechar').addEventListener('click', () => adminDialog.close());
+  adminDialog.addEventListener('click', evento => {
+    if (evento.target === adminDialog) adminDialog.close();
+  });
+  adminDialog.addEventListener('close', () => {
+    adminLogin.hidden = false;
+    adminPainel.hidden = true;
+    adminLoginForm.reset();
+  });
+
+  adminLoginForm.addEventListener('submit', evento => {
+    evento.preventDefault();
+    const senha = new FormData(adminLoginForm).get('password');
+    if (senha !== senhaAdministrativa) {
+      adminLoginMensagem.textContent = 'Senha incorreta. Tente novamente.';
+      adminLoginForm.reset();
+      document.querySelector('#admin-senha').focus();
+      return;
+    }
+    adminLogin.hidden = true;
+    adminPainel.hidden = false;
+    adminLoginMensagem.textContent = '';
+    mostrarProdutosNoPainel();
+    adminStatus.textContent = '';
+  });
+
+  adminProdutosForm.addEventListener('submit', async evento => {
+    evento.preventDefault();
+    adminStatus.textContent = 'Salvando alterações...';
+    const atualizados = [];
+    try {
+      for (const item of adminProdutosLista.querySelectorAll('.admin-produto')) {
+        const produto = produtos.find(atual => atual.id === item.dataset.productId);
+        if (!produto) continue;
+        const nome = item.querySelector('.admin-produto-nome').value.trim();
+        const descricao = item.querySelector('.admin-produto-descricao').value.trim();
+        if (!nome || !descricao) throw new Error('Preencha o nome e a descrição de todos os sabores.');
+        const arquivo = item.querySelector('.admin-produto-imagem').files[0];
+        atualizados.push({
+          ...produto,
+          nome,
+          descricao,
+          detalhes: descricao,
+          imagem: arquivo ? await converterImagem(arquivo) : produto.imagem
+        });
+      }
+    } catch (erro) {
+      adminStatus.textContent = erro.message;
+      return;
+    }
+    salvarProdutos(atualizados);
+  });
+
+  adminAdicionar.addEventListener('click', async () => {
+    const nomeCampo = document.querySelector('#admin-novo-nome');
+    const descricaoCampo = document.querySelector('#admin-nova-descricao');
+    const imagemCampo = document.querySelector('#admin-nova-imagem');
+    const nome = nomeCampo.value.trim();
+    const descricao = descricaoCampo.value.trim();
+    if (!nome || !descricao || !imagemCampo.files[0]) {
+      adminStatus.textContent = 'Preencha nome, descrição e selecione uma imagem.';
+      return;
+    }
+
+    adminStatus.textContent = 'Adicionando sabor...';
+    try {
+      const imagem = await converterImagem(imagemCampo.files[0]);
+      const novoProduto = {
+        id: `personalizado-${Date.now()}`,
+        nome,
+        descricao,
+        detalhes: descricao,
+        imagem,
+        personalizado: true
+      };
+      if (salvarProdutos([...produtos, novoProduto])) {
+        nomeCampo.value = '';
+        descricaoCampo.value = '';
+        imagemCampo.value = '';
+      }
+    } catch (erro) {
+      adminStatus.textContent = erro.message;
+    }
+  });
+
+  document.querySelector('#admin-sair').addEventListener('click', () => adminDialog.close());
+  aplicarProdutos();
 
   /* Smooth scroll para links internos, respeitando redução de movimento. */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
