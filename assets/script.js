@@ -445,10 +445,19 @@
 
   if (introducao) {
     const duracaoMinima = movimentoReduzido.matches ? 1000 : 1500;
+    const conteudoIntroducao = introducao.querySelector('.entrada-conteudo');
+    const centralizarIntroducao = () => {
+      conteudoIntroducao.style.left = `${document.documentElement.clientWidth / 2}px`;
+    };
+    centralizarIntroducao();
+    window.addEventListener('resize', centralizarIntroducao);
 
     window.setTimeout(() => {
       introducao.classList.add('entrada-saindo');
-      window.setTimeout(() => introducao.remove(), 360);
+      window.setTimeout(() => {
+        window.removeEventListener('resize', centralizarIntroducao);
+        introducao.remove();
+      }, 360);
     }, duracaoMinima);
   }
 
