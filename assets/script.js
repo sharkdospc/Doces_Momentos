@@ -63,7 +63,6 @@
       'encontro de sabores': 'a meeting of flavors',
       'Dois Amores': 'Two Loves',
       'duas camadas, um amor só': 'two layers, one love',
-      'descobrir esse carinho': 'discover this treat',
       'Uma combinação deliciosa de chocolate e creme, para quem nunca quis escolher só um.': 'A delicious blend of chocolate and cream for anyone who never wanted to choose just one.',
       'Escolher meu tamanho': 'Choose my size',
       'crocante favorito': 'crunchy favorite',
@@ -76,7 +75,6 @@
       'Toque em um potinho para conhecer um pouquinho mais.': 'Tap a dessert to discover a little more.',
       'Ninho': 'Milk powder cream',
       'cremoso e suave': 'smooth and creamy',
-      'descobrir o sabor': 'discover this flavor',
       'Um carinho cremoso para deixar qualquer pausa mais gostosa.': 'A creamy treat to make any break a little sweeter.',
       'Cenoura': 'Carrot',
       'fofinho com cobertura': 'soft cake with frosting',
@@ -163,7 +161,6 @@
       'encontro de sabores': 'encuentro de sabores',
       'Dois Amores': 'Dos Amores',
       'duas camadas, um amor só': 'dos capas, un solo amor',
-      'descobrir esse carinho': 'descubre este dulce',
       'Uma combinação deliciosa de chocolate e creme, para quem nunca quis escolher só um.': 'Una deliciosa combinación de chocolate y crema, para quienes nunca quisieron elegir solo uno.',
       'Escolher meu tamanho': 'Elegir mi tamaño',
       'crocante favorito': 'crujiente favorito',
@@ -176,7 +173,6 @@
       'Toque em um potinho para conhecer um pouquinho mais.': 'Toca un vasito para conocerlo un poco mejor.',
       'Ninho': 'Crema de leche en polvo',
       'cremoso e suave': 'cremoso y suave',
-      'descobrir o sabor': 'descubrir el sabor',
       'Um carinho cremoso para deixar qualquer pausa mais gostosa.': 'Un dulce cremoso para hacer más deliciosa cualquier pausa.',
       'Cenoura': 'Zanahoria',
       'fofinho com cobertura': 'esponjoso con cobertura',
@@ -263,7 +259,6 @@
       'encontro de sabores': '风味相遇',
       'Dois Amores': '双重甜蜜',
       'duas camadas, um amor só': '两层美味，一份心意',
-      'descobrir esse carinho': '探索这份甜蜜',
       'Uma combinação deliciosa de chocolate e creme, para quem nunca quis escolher só um.': '巧克力与奶油的美味组合，再也不用只选一种。',
       'Escolher meu tamanho': '选择规格',
       'crocante favorito': '人气酥脆口感',
@@ -276,7 +271,6 @@
       'Toque em um potinho para conhecer um pouquinho mais.': '点击甜点杯，了解更多。',
       'Ninho': '奶粉奶油',
       'cremoso e suave': '香滑细腻',
-      'descobrir o sabor': '探索口味',
       'Um carinho cremoso para deixar qualquer pausa mais gostosa.': '一份香滑甜点，让每次休息都更美好。',
       'Cenoura': '胡萝卜',
       'fofinho com cobertura': '松软蛋糕配糖霜',
@@ -725,10 +719,7 @@
     nome.className = 'sabor-nome';
     const descricao = document.createElement('div');
     descricao.className = 'sabor-desc';
-    const indicacao = document.createElement('span');
-    indicacao.className = 'card-indicacao';
-    indicacao.textContent = 'descobrir o sabor +';
-    conteudo.append(nome, descricao, indicacao);
+    conteudo.append(nome, descricao);
     resumo.append(imagemArea, conteudo);
 
     const detalhes = document.createElement('div');
