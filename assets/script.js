@@ -461,16 +461,106 @@
     }, duracaoMinima);
   }
 
+  const carrosseis = new WeakMap();
+
+  function configurarCarrossel(grid) {
+    if (carrosseis.has(grid)) return;
+
+    grid.dataset.carousel = '';
+    const controles = document.createElement('div');
+    controles.className = 'carousel-controls';
+
+    function criarBotao(direcao, rotulo) {
+      const botao = document.createElement('button');
+      botao.className = `carousel-arrow carousel-arrow-${direcao}`;
+      botao.type = 'button';
+      botao.setAttribute('aria-label', rotulo);
+      const topo = document.createElement('span');
+      topo.className = 'arrow-top';
+      const baixo = document.createElement('span');
+      baixo.className = 'arrow-bottom';
+      botao.append(topo, baixo);
+      return botao;
+    }
+
+    const anterior = criarBotao('prev', 'Ver bolo anterior');
+    const indicador = document.createElement('span');
+    indicador.className = 'carousel-indicator';
+    indicador.setAttribute('aria-live', 'polite');
+    indicador.setAttribute('aria-atomic', 'true');
+    const proximo = criarBotao('next', 'Ver próximo bolo');
+    controles.append(anterior, indicador, proximo);
+
+    const estado = { indice: 0, controles, indicador };
+    carrosseis.set(grid, estado);
+
+    function atualizar() {
+      const cartoes = [...grid.querySelectorAll('.card-sabor')];
+      if (cartoes.length === 0) {
+        controles.hidden = true;
+        return;
+      }
+
+      estado.indice = (estado.indice + cartoes.length) % cartoes.length;
+      controles.hidden = cartoes.length < 2;
+      indicador.textContent = `${estado.indice + 1} / ${cartoes.length}`;
+      cartoes.forEach((cartao, indice) => {
+        const ativo = indice === estado.indice;
+        cartao.hidden = !ativo;
+        cartao.classList.toggle('is-active', ativo);
+        cartao.setAttribute('aria-roledescription', 'slide');
+        cartao.setAttribute('aria-label', `${indice + 1} de ${cartoes.length}`);
+        if (ativo) cartao.setAttribute('data-visivel', '');
+        else cartao.removeAttribute('data-visivel');
+      });
+    }
+
+    estado.atualizar = atualizar;
+    anterior.addEventListener('click', () => {
+      estado.indice -= 1;
+      atualizar();
+    });
+    proximo.addEventListener('click', () => {
+      estado.indice += 1;
+      atualizar();
+    });
+    controles.addEventListener('keydown', evento => {
+      if (evento.key !== 'ArrowLeft' && evento.key !== 'ArrowRight') return;
+      evento.preventDefault();
+      estado.indice += evento.key === 'ArrowRight' ? 1 : -1;
+      atualizar();
+    });
+
+    grid.after(controles);
+    atualizar();
+  }
+
+  document.querySelectorAll('.grid-sabores').forEach(grid => {
+    grid.querySelectorAll('details.card-sabor').forEach(card => {
+      const cartao = document.createElement('article');
+      cartao.className = card.className;
+      const resumo = card.querySelector('.card-resumo');
+      const conteudoResumo = document.createElement('div');
+      conteudoResumo.className = 'card-resumo';
+      while (resumo.firstChild) conteudoResumo.append(resumo.firstChild);
+      cartao.append(conteudoResumo, card.querySelector('.card-detalhes'));
+      card.replaceWith(cartao);
+    });
+    if (!grid.classList.contains('grid-destaques')) {
+      configurarCarrossel(grid);
+    }
+  });
+
   const elementosRevelados = document.querySelectorAll(
-    '.titulo-secao, .card-sabor, .tamanhos-intro, .tamanho-card, ' +
-    '.sobre-foto-moldura, .sobre-conteudo, .contato-conteudo'
+    '.hero-conteudo, .hero-ilustracao, .hero-rolagem, .titulo-secao, .card-sabor, ' +
+    '.tamanhos-intro, .tamanho-card, .tamanhos-nota, .personalizacao-nota, ' +
+    '.personalizacao-link, .sobre-foto-moldura, .sobre-conteudo, .contato-conteudo, ' +
+    '.contato-links, .avaliacao-conteudo'
   );
 
   elementosRevelados.forEach((elemento, indice) => {
     elemento.classList.add('revelar-rolagem');
-    if (elemento.matches('.card-sabor, .tamanho-card')) {
-      elemento.style.setProperty('--atraso-revelacao', `${(indice % 6) * 55}ms`);
-    }
+    elemento.style.setProperty('--atraso-revelacao', `${(indice % 6) * 110}ms`);
   });
 
   if (movimentoReduzido.matches || !('IntersectionObserver' in window)) {
@@ -485,6 +575,7 @@
     }, { rootMargin: '0px 0px -40px 0px', threshold: 0 });
 
     elementosRevelados.forEach(elemento => {
+      if (elemento.hidden) return;
       if (elemento.getBoundingClientRect().top < window.innerHeight * 0.82) {
         elemento.setAttribute('data-visivel', '');
       } else {
@@ -615,12 +706,12 @@
   }
 
   function criarCartaoPersonalizado(produto) {
-    const cartao = document.createElement('details');
+    const cartao = document.createElement('article');
     cartao.className = 'card-sabor';
     cartao.dataset.productId = produto.id;
     cartao.dataset.customProduct = '';
 
-    const resumo = document.createElement('summary');
+    const resumo = document.createElement('div');
     resumo.className = 'card-resumo';
     const imagemArea = document.createElement('div');
     imagemArea.className = 'card-imagem';
@@ -649,6 +740,7 @@
     detalhes.append(textoDetalhes, link);
     cartao.append(resumo, detalhes);
     document.querySelector('.grid-demais-sabores').append(cartao);
+    configurarCarrossel(document.querySelector('.grid-demais-sabores'));
     return cartao;
   }
 
@@ -667,6 +759,9 @@
       imagem.src = produto.imagem;
       imagem.alt = `Bolo de pote ${produto.nome}`;
       cartao.querySelector('.card-detalhes p').textContent = produto.detalhes || produto.descricao;
+    });
+    document.querySelectorAll('.grid-sabores').forEach(grid => {
+      carrosseis.get(grid)?.atualizar();
     });
   }
 
@@ -861,17 +956,6 @@
           block: 'start'
         });
       }
-    });
-  });
-
-  /* Uma carta aberta por vez mantém a descoberta leve e organizada. */
-  document.querySelectorAll('.card-sabor').forEach(card => {
-    card.addEventListener('toggle', () => {
-      if (!card.open) return;
-
-      document.querySelectorAll('.card-sabor[open]').forEach(otherCard => {
-        if (otherCard !== card) otherCard.open = false;
-      });
     });
   });
 

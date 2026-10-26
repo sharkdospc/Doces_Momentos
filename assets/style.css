@@ -610,6 +610,126 @@ header {
   max-width: 1180px;
 }
 
+.grid-sabores[data-carousel] {
+  display: grid;
+  max-width: 440px;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: stretch;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 4vw, 2rem);
+  margin: 1.25rem auto 0;
+}
+
+.carousel-controls[hidden] {
+  display: none;
+}
+
+.carousel-indicator {
+  min-width: 3.5rem;
+  color: #805c63;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.carousel-arrow {
+  position: relative;
+  display: block;
+  width: clamp(40px, 12vw, 50px);
+  height: clamp(44px, 13vw, 60px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 120ms ease;
+}
+
+.carousel-arrow:hover {
+  transform: scale(1.06);
+}
+
+.carousel-arrow:active {
+  transform: scale(0.92);
+}
+
+.carousel-arrow:focus-visible {
+  border-radius: 8px;
+  outline: 3px solid #a94f66;
+  outline-offset: 4px;
+}
+
+.carousel-arrow-prev {
+  transform: scaleX(-1);
+}
+
+.carousel-arrow-prev:hover {
+  transform: scaleX(-1) scale(1.06);
+}
+
+.carousel-arrow-prev:active {
+  transform: scaleX(-1) scale(0.92);
+}
+
+.carousel-arrow .arrow-top,
+.carousel-arrow .arrow-bottom {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 99px;
+  background: #8f4a5c;
+}
+
+.carousel-arrow .arrow-top {
+  transform: rotate(45deg);
+  transform-origin: bottom right;
+}
+
+.carousel-arrow .arrow-bottom {
+  transform: rotate(-45deg);
+  transform-origin: top right;
+}
+
+.carousel-arrow .arrow-top::after,
+.carousel-arrow .arrow-bottom::after {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: #d46b6b;
+  content: "";
+  transition: left 160ms ease, right 160ms ease;
+}
+
+.carousel-arrow .arrow-top::after {
+  right: 0;
+  left: 100%;
+}
+
+.carousel-arrow .arrow-bottom::after {
+  right: 100%;
+  left: 0;
+}
+
+.carousel-arrow:hover .arrow-top::after,
+.carousel-arrow:focus-visible .arrow-top::after {
+  left: 0;
+}
+
+.carousel-arrow:hover .arrow-bottom::after,
+.carousel-arrow:focus-visible .arrow-bottom::after {
+  right: 0;
+}
+
 .card-sabor {
   min-width: 0;
   border: 1px solid rgba(184, 95, 117, 0.13);
@@ -622,8 +742,19 @@ header {
 
 .card-resumo {
   display: block;
-  cursor: pointer;
   list-style: none;
+}
+
+.card-sabor[hidden] {
+  display: none;
+}
+
+.card-sabor .card-detalhes {
+  display: none;
+}
+
+.card-sabor.is-active .card-detalhes {
+  display: block;
 }
 
 .card-resumo::-webkit-details-marker {
@@ -882,8 +1013,29 @@ body {
 
 .site-header {
   min-height: 76px;
-  padding: 0.8rem 6%;
-  gap: 1.5rem;
+  min-height: 88px;
+  padding: 0.9rem 4%;
+  gap: 1rem;
+}
+
+.site-header .social-icons {
+  flex-shrink: 0;
+}
+
+.site-header .social-label {
+  position: relative;
+  z-index: 1;
+  margin-left: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.site-header .social-icons [data-social="whatsapp"] {
+  width: auto;
+  min-width: 48px;
+  padding: 0 0.8rem;
+  border-radius: 99px;
 }
 
 .site-header .logo,
@@ -1796,7 +1948,7 @@ footer p span {
 @media (max-width: 900px) {
   .site-header {
     flex-wrap: wrap;
-    gap: 0.65rem 1rem;
+    gap: 0.65rem 0.8rem;
   }
 
   .navegacao {
@@ -1828,7 +1980,7 @@ footer p span {
 
 @media (max-width: 640px) {
   .site-header {
-    padding: 0.7rem 5%;
+    padding: 0.7rem 4%;
   }
 
   .site-header .logo {
@@ -1841,18 +1993,21 @@ footer p span {
     justify-content: center;
   }
 
-  .site-header .whatsapp-btn {
-    width: 42px;
-    min-width: 42px;
-    height: 42px;
-    padding: 0;
+  .site-header .social-icons {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .site-header .social-icons [data-social="whatsapp"] {
+    min-height: 42px;
+    padding: 0 0.65rem;
+  }
+
+  .site-header .social-label {
+    font-size: 0.7rem;
   }
 
   .site-header .instagram-btn span:not(:first-child) {
-    display: none;
-  }
-
-  .site-header .whatsapp-rotulo {
     display: none;
   }
 
@@ -2331,17 +2486,15 @@ body::before {
 }
 
 html.js .revelar-rolagem {
-  clip-path: inset(0 0 100% 0);
   opacity: 0;
-  transition:
-    clip-path 640ms var(--ease-in-out),
-    opacity 500ms var(--ease-out);
+  transform: translateY(24px);
+  transition: opacity 650ms var(--ease-out), transform 700ms var(--ease-out);
   transition-delay: var(--atraso-revelacao, 0ms);
 }
 
 html.js .revelar-rolagem[data-visivel] {
-  clip-path: inset(0);
   opacity: 1;
+  transform: translateY(0);
 }
 
 .card-sabor.revelar-rolagem {
@@ -3228,6 +3381,130 @@ body[data-theme="dark"] .card-resumo:focus-visible {
   width: 72px;
   height: 88px;
   transition: none;
+}
+
+.example-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.example-2 .icon-content {
+  position: relative;
+  margin: 0;
+}
+
+.example-2 .icon-content > a {
+  position: relative;
+  display: flex;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(77, 77, 77, 0.1);
+  border-radius: 50%;
+  background: #fff;
+  color: #4d4d4d;
+  text-decoration: none;
+  transition: box-shadow 250ms ease, color 250ms ease, transform 250ms ease;
+}
+
+.example-2 .icon-content > a:hover,
+.example-2 .icon-content > a:focus-visible {
+  color: #fff;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.16);
+  transform: translateY(-2px);
+}
+
+.example-2 .icon-content > a:focus-visible {
+  outline: 3px solid #a94f66;
+  outline-offset: 3px;
+}
+
+.example-2 .icon-content > a svg {
+  position: relative;
+  z-index: 1;
+  width: 25px;
+  height: 25px;
+}
+
+.example-2 .icon-content > a[data-social="instagram"] svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.example-2 .icon-content > a[data-social="instagram"] svg circle:last-child {
+  fill: currentColor;
+  stroke: none;
+}
+
+.example-2 .filled {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 0;
+  background: #128c7e;
+  transition: height 250ms ease;
+}
+
+.example-2 .icon-content > a:hover .filled,
+.example-2 .icon-content > a:focus-visible .filled {
+  height: 100%;
+}
+
+.example-2 [data-social="whatsapp"] .filled,
+.example-2 [data-social="whatsapp"] ~ .tooltip {
+  background: #128c7e;
+}
+
+.example-2 [data-social="instagram"] .filled,
+.example-2 [data-social="instagram"] ~ .tooltip {
+  background: linear-gradient(45deg, #405de6, #5b51db, #b33ab4, #c135b4, #e1306c, #fd1f1f);
+}
+
+.example-2 .tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  visibility: hidden;
+  padding: 0.35rem 0.65rem;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 0.78rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%);
+  transition: opacity 180ms ease, top 180ms ease, visibility 180ms ease;
+}
+
+.example-2 .icon-content:hover .tooltip,
+.example-2 .icon-content:focus-within .tooltip {
+  top: -42px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.contato-links {
+  display: flex;
+  justify-content: center;
+}
+
+body[data-theme="dark"] .example-2 .icon-content > a {
+  border-color: rgba(240, 183, 197, 0.2);
+  background: #3b2a31;
+  color: #f4c3ce;
+}
+
+body[data-theme="dark"] .example-2 .icon-content > a:hover,
+body[data-theme="dark"] .example-2 .icon-content > a:focus-visible {
+  color: #fff;
 }
 
 @media (max-width: 640px) {
