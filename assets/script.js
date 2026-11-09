@@ -40,6 +40,7 @@
       'Pular abertura': 'Skip intro',
       'Doces Momentos, início': 'Doces Momentos, home',
       'Navegação principal': 'Main navigation',
+      'Entre em contato pelas redes sociais': 'Contact us on social media',
       'Mais pedidos': 'Best sellers',
       'Sabores': 'Flavors',
       'Tamanhos': 'Sizes',
@@ -138,6 +139,7 @@
       'Pular abertura': 'Saltar introducción',
       'Doces Momentos, início': 'Doces Momentos, inicio',
       'Navegação principal': 'Navegación principal',
+      'Entre em contato pelas redes sociais': 'Póngase en contacto con nosotros en las redes sociales',
       'Mais pedidos': 'Más pedidos',
       'Sabores': 'Sabores',
       'Tamanhos': 'Tamaños',
@@ -236,6 +238,7 @@
       'Pular abertura': '跳过开场',
       'Doces Momentos, início': 'Doces Momentos，首页',
       'Navegação principal': '主导航',
+      'Entre em contato pelas redes sociais': '通过社交媒体与我们联系',
       'Mais pedidos': '人气推荐',
       'Sabores': '口味',
       'Tamanhos': '规格',
@@ -328,6 +331,76 @@
     }
   };
 
+  const chavesLegadasDeTraducao = {
+    'Feito com carinho para adoçar o seu dia.': 'feito com carinho, para adoçar seu dia',
+    'Feito com carinho para Joinville.': 'feito com carinho para toda Joinville',
+    'Boas-vindas!': 'Bem-vindo!',
+    'Um momento especial para você.': 'Um momento só seu.',
+    'Camadas de sabor e cuidado em cada detalhe: uma sobremesa que transforma uma pausa simples em um momento especial.': 'Camadas de sabor, cuidado em cada detalhe e aquele docinho que transforma uma pausa simples em um momento especial.',
+    'Conheça os favoritos': 'Descobrir os favoritos',
+    'Consulte os tamanhos e preços': 'Ver tamanhos e preços',
+    'Uma colherada': 'uma colherada',
+    'de felicidade.': 'de felicidade',
+    'Conheça nossos sabores.': 'Acompanhe nossos sabores deliciosos',
+    'Utilize as setas para navegar pelos sabores.': 'Toque em um potinho para conhecer um pouquinho mais.',
+    'Os favoritos da casa': 'os queridinhos da casa',
+    'Dois sabores que conquistam desde a primeira colherada.': 'Dois favoritos que conquistam na primeira colherada.',
+    'O mais querido': 'mais amado',
+    'Um encontro de sabores': 'encontro de sabores',
+    'Duas camadas, um só amor.': 'duas camadas, um amor só',
+    'Uma deliciosa combinação de chocolate e creme, para quem não quer escolher apenas um sabor.': 'Uma combinação deliciosa de chocolate e creme, para quem nunca quis escolher só um.',
+    'Escolha o seu tamanho': 'Escolher meu tamanho',
+    'O favorito crocante': 'crocante favorito',
+    'Crocante e cremoso': 'crocante & cremoso',
+    'Uma textura que dá vontade de repetir.': 'textura que dá vontade de repetir',
+    'Creme suave com pedaços crocantes: o equilíbrio perfeito para uma pausa deliciosa.': 'Creme suave com pedacinhos crocantes: o equilíbrio perfeito para uma pausa gostosa.',
+    'Um sabor para cada desejo': 'um sabor para cada vontade',
+    'Uma sobremesa cremosa para tornar qualquer pausa mais deliciosa.': 'Um carinho cremoso para deixar qualquer pausa mais gostosa.',
+    'Cremoso e suave.': 'cremoso e suave',
+    'Macio e coberto com deliciosa cobertura.': 'fofinho com cobertura',
+    'Um clássico macio e coberto, perfeito para acompanhar boas conversas.': 'Um clássico fofinho com cobertura, feito para acompanhar boas conversas.',
+    'Um clássico irresistível.': 'clássico irresistível',
+    'Um clássico com sabor de festa, que nunca sai de moda.': 'O clássico que tem gostinho de festa e nunca sai de moda.',
+    'Coco cremoso com chocolate.': 'coco cremoso com chocolate',
+    'Uma combinação de coco e chocolate para quem aprecia sabores marcantes e cremosos.': 'A combinação de coco e chocolate para quem gosta de um sabor marcante e cremoso.',
+    'Creme de amendoim, cremoso e irresistível.': 'amendoim cremoso e irresistível',
+    'O sabor da paçoca em um creme suave, perfeito para adoçar qualquer pausa.': 'O gostinho da paçoca em um creme suave, perfeito para adoçar qualquer pausa.',
+    'Escolha o seu momento': 'escolha seu momento',
+    'Um tamanho para cada vontade.': 'Do tamanho da sua vontade.',
+    'Uma opção pequena para adoçar uma pausa e outra maior para aproveitar até a última colherada.': 'Pequeno para adoçar uma pausa, grandinho para aproveitar até a última colherada.',
+    'Uma deliciosa pausa': 'um mimo gostoso',
+    'Mais para aproveitar': 'mais para aproveitar',
+    'Para saborear sem pressa': 'para curtir sem pressa',
+    'Escolha o sabor que mais lhe agrada e faça seu pedido pelo WhatsApp ou pelo Instagram.': 'Escolha o sabor que mais combina com você e faça seu pedido pelo WhatsApp ou Instagram.',
+    'Um sonho servido em camadas': 'um sonho servido em camadas',
+    'Um grande gesto de carinho pode começar em um potinho.': 'Todo grande carinho pode começar em um potinho.',
+    'Somos um casal da Zona Sul de Joinville que transformou a paixão por bolos em um pequeno empreendimento de bolos de pote. Cada receita é preparada com dedicação e cuidado, para fazer parte de momentos especiais.': 'Somos um casal da Zona Sul de Joinville que transformou o amor por bolos em um pequeno empreendimento de bolos de pote. Cada receita é preparada com dedicação, cuidado e vontade de fazer parte dos seus momentos especiais.',
+    'Conheça nosso trabalho': 'Venha conhecer nosso cantinho',
+    'Entre em contato pelas redes sociais': 'Fale com a gente nas redes sociais',
+    'Ver o sabor anterior': 'Ver bolo anterior',
+    'Ver o próximo sabor': 'Ver próximo bolo',
+    'Seu próximo momento especial começa aqui': 'seu próximo momento gostoso começa aqui',
+    'Que tal adoçar o dia de alguém especial?': 'Vamos adoçar o dia de quem você ama?',
+    'Escolha seu sabor favorito e entre em contato pelo WhatsApp ou pelo Instagram. No WhatsApp, uma mensagem sugerida facilitará o início da conversa.': 'Escolha seu sabor favorito e fale com a gente pelo WhatsApp ou Instagram. Toque no botão do WhatsApp para começar a conversa com a mensagem de encomenda pronta.',
+    'Feito com carinho para todos os apreciadores de bolos.': 'Feito com carinho para todos os amantes de bolos',
+    'Olá! Sou a Fada Gigica. Vamos conhecer nossas sobremesas?': 'Oi! Sou a Fada Gigica. Vamos descobrir nossos docinhos?',
+    'Ouça uma dica de navegação da Fada Gigica': 'Ouvir uma dica de navegação da Fada Gigica',
+    'Vamos explorar os sabores?': 'Vamos explorar os sabores juntos?',
+    'Selecione um potinho para saber mais.': 'Toque em um potinho para descobrir mais!',
+    'Sua próxima sobremesa favorita pode estar aqui.': 'Seu próximo docinho favorito pode estar por aqui.',
+    'Já escolheu o tamanho ideal?': 'Já escolheu o tamanho do seu carinho?',
+    'Faça sua encomenda com apenas um toque!': 'Uma encomenda gostosa está a um toque de distância!',
+    'Você pode alterar o tema do site neste botão.': 'Você pode mudar as cores do site por aqui.',
+    'Estou pronta para ajudar com a sua encomenda!': 'Prontinha para ajudar com sua encomenda!',
+    'Selecione para ouvir uma dica da Fada Gigica': 'Toque para ouvir uma dica da Fada Gigica',
+    'Bolo de pote de leite em pó': 'Bolo de pote Ninho',
+    'Casal responsável pela Doces Momentos': 'Foto do casal por trás da Doces Momentos'
+  };
+
+  function traduzir(texto, dicionario) {
+    return dicionario[texto] || dicionario[chavesLegadasDeTraducao[texto]];
+  }
+
   let idiomaAtivo = 'pt-BR';
   function aplicarIdioma(codigo) {
     const dicionario = traducoes[codigo] || {};
@@ -335,7 +408,7 @@
     const metas = {
       'pt-BR': {
         titulo: 'Doces Momentos | Bolos de pote artesanais',
-        descricao: 'Doces Momentos — bolos de pote artesanais feitos com carinho na Zona Sul de Joinville.'
+        descricao: 'Doces Momentos: bolos de pote artesanais preparados com carinho na Zona Sul de Joinville.'
       },
       en: {
         titulo: 'Doces Momentos | Handmade dessert jars',
@@ -356,7 +429,7 @@
     document.title = metas[idiomaDocumento].titulo;
     document.querySelector('meta[name="description"]').content = metas[idiomaDocumento].descricao;
     const mensagensPedido = {
-      'pt-BR': 'Olá, queria encomendar o meu bolo de pote',
+      'pt-BR': 'Olá! Gostaria de encomendar um bolo de pote.',
       en: 'Hi, I would like to order a dessert jar',
       es: 'Hola, quisiera pedir un postre en vasito',
       'zh-CN': '你好，我想订购一份甜点杯'
@@ -368,7 +441,7 @@
 
     textosOriginais.forEach(([noTexto, valorOriginal]) => {
       const textoOriginal = valorOriginal.trim();
-      const traducao = dicionario[textoOriginal];
+      const traducao = traduzir(textoOriginal, dicionario);
       if (!traducao) {
         noTexto.nodeValue = valorOriginal;
         return;
@@ -380,7 +453,7 @@
     });
 
     atributosOriginais.forEach(([elemento, atributo, valorOriginal]) => {
-      elemento.setAttribute(atributo, dicionario[valorOriginal] || valorOriginal);
+      elemento.setAttribute(atributo, traduzir(valorOriginal, dicionario) || valorOriginal);
     });
 
     idiomaToggle.textContent = dicionario['Idioma: PT'] || 'Idioma: PT';
@@ -477,12 +550,12 @@
       return botao;
     }
 
-    const anterior = criarBotao('prev', 'Ver bolo anterior');
+    const anterior = criarBotao('prev', 'Ver o sabor anterior');
     const indicador = document.createElement('span');
     indicador.className = 'carousel-indicator';
     indicador.setAttribute('aria-live', 'polite');
     indicador.setAttribute('aria-atomic', 'true');
-    const proximo = criarBotao('next', 'Ver próximo bolo');
+    const proximo = criarBotao('next', 'Ver o próximo sabor');
     controles.append(anterior, indicador, proximo);
 
     const estado = { indice: 0, controles, indicador };
@@ -601,17 +674,17 @@
   const fadaBotao = fada.querySelector('.fada-toque');
   const fadaFala = fada.querySelector('.fada-fala');
   const falasFada = [
-    'Vamos explorar os sabores juntos?',
-    'Toque em um potinho para descobrir mais!',
-    'Seu próximo docinho favorito pode estar por aqui.',
-    'Já escolheu o tamanho do seu carinho?',
-    'Uma encomenda gostosa está a um toque de distância!'
+    'Vamos explorar os sabores?',
+    'Selecione um potinho para saber mais.',
+    'Sua próxima sobremesa favorita pode estar aqui.',
+    'Já escolheu o tamanho ideal?',
+    'Faça sua encomenda com apenas um toque!'
   ];
   let falaTimeout;
   let indiceFala = 0;
 
   function mostrarFalaFada(mensagem) {
-    fadaFala.textContent = traducoes[idiomaAtivo]?.[mensagem] || mensagem;
+    fadaFala.textContent = traduzir(mensagem, traducoes[idiomaAtivo] || {}) || mensagem;
     fada.classList.add('fada-falando');
     window.clearTimeout(falaTimeout);
     falaTimeout = window.setTimeout(() => {
@@ -629,8 +702,8 @@
     const avaliacao = new FormData(formularioAvaliacao);
     const estrelas = avaliacao.get('rating');
     const comentario = String(avaliacao.get('comment') || '').trim();
-    const assunto = encodeURIComponent('Avaliação ou mensagem pelo site Doces Momentos');
-    const corpo = encodeURIComponent(`Avaliação: ${estrelas} de 5 estrelas\n\nMensagem:\n${comentario}`);
+    const assunto = encodeURIComponent('Avaliação ou sugestão enviada pelo site Doces Momentos');
+    const corpo = encodeURIComponent(`Avaliação: ${estrelas} de 5 estrelas\n\nComentário:\n${comentario}`);
     window.location.href = `mailto:carloshenriquemichalak3@gmail.com?subject=${assunto}&body=${corpo}`;
   });
 
@@ -649,279 +722,6 @@
   opcoesEstrelas.forEach(opcao => {
     opcao.addEventListener('change', () => atualizarEstrelas(opcao.value));
   });
-
-  const adminDialog = document.querySelector('#admin-dialog');
-  if (adminDialog) {
-  const adminLogin = document.querySelector('#admin-login');
-  const adminPainel = document.querySelector('#admin-painel');
-  const adminLoginForm = document.querySelector('#admin-login-form');
-  const adminLoginMensagem = document.querySelector('#admin-login-mensagem');
-  const adminProdutosForm = document.querySelector('#admin-produtos-form');
-  const adminProdutosLista = document.querySelector('#admin-produtos-lista');
-  const adminStatus = document.querySelector('#admin-status');
-  const adminAdicionar = document.querySelector('#admin-adicionar');
-  const chaveProdutos = 'doces-momentos-produtos';
-  const cartoesIniciais = [...document.querySelectorAll('.grid-sabores .card-sabor')];
-
-  function textoOriginalDo(elemento) {
-    const entrada = textosOriginais.find(([noTexto]) => noTexto.parentElement === elemento);
-    return entrada ? entrada[1].trim() : elemento.textContent.trim();
-  }
-
-  const produtosIniciais = cartoesIniciais.map((cartao, indice) => ({
-    id: `produto-${indice}`,
-    nome: textoOriginalDo(cartao.querySelector('.sabor-nome')),
-    descricao: textoOriginalDo(cartao.querySelector('.sabor-desc')),
-    detalhes: textoOriginalDo(cartao.querySelector('.card-detalhes p')),
-    imagem: cartao.querySelector('.card-imagem img').getAttribute('src'),
-    personalizado: false
-  }));
-  let produtos = produtosIniciais;
-
-  try {
-    const produtosSalvos = JSON.parse(localStorage.getItem(chaveProdutos) || 'null');
-    if (Array.isArray(produtosSalvos)) {
-      const produtosSalvosPorId = new Map(produtosSalvos
-        .filter(produto => produto && typeof produto.id === 'string' &&
-          typeof produto.nome === 'string' && typeof produto.descricao === 'string' &&
-          typeof produto.imagem === 'string')
-        .map(produto => [produto.id, produto]));
-      produtos = produtosIniciais
-        .map(produto => ({ ...produto, ...produtosSalvosPorId.get(produto.id) }))
-        .concat(produtosSalvos.filter(produto =>
-          produto && produto.personalizado === true &&
-          typeof produto.id === 'string' && typeof produto.nome === 'string' &&
-          typeof produto.descricao === 'string' && typeof produto.imagem === 'string'
-        ));
-    }
-  } catch (erro) {
-    console.error('Não foi possível carregar os sabores salvos neste navegador.', erro);
-    adminStatus.textContent = 'Não foi possível ler os sabores salvos. Verifique o armazenamento do navegador.';
-  }
-
-  function criarCartaoPersonalizado(produto) {
-    const cartao = document.createElement('article');
-    cartao.className = 'card-sabor';
-    cartao.dataset.productId = produto.id;
-    cartao.dataset.customProduct = '';
-
-    const resumo = document.createElement('div');
-    resumo.className = 'card-resumo';
-    const imagemArea = document.createElement('div');
-    imagemArea.className = 'card-imagem';
-    const imagem = document.createElement('img');
-    imagem.loading = 'lazy';
-    imagemArea.append(imagem);
-
-    const conteudo = document.createElement('div');
-    conteudo.className = 'card-conteudo';
-    const nome = document.createElement('div');
-    nome.className = 'sabor-nome';
-    const descricao = document.createElement('div');
-    descricao.className = 'sabor-desc';
-    conteudo.append(nome, descricao);
-    resumo.append(imagemArea, conteudo);
-
-    const detalhes = document.createElement('div');
-    detalhes.className = 'card-detalhes';
-    const textoDetalhes = document.createElement('p');
-    const link = document.createElement('a');
-    link.href = '#tamanhos';
-    link.textContent = 'Escolher meu tamanho';
-    detalhes.append(textoDetalhes, link);
-    cartao.append(resumo, detalhes);
-    document.querySelector('.grid-demais-sabores').append(cartao);
-    configurarCarrossel(document.querySelector('.grid-demais-sabores'));
-    return cartao;
-  }
-
-  function aplicarProdutos() {
-    document.querySelectorAll('[data-custom-product]').forEach(cartao => cartao.remove());
-    produtos.forEach((produto, indice) => {
-      const cartao = produto.personalizado
-        ? criarCartaoPersonalizado(produto)
-        : cartoesIniciais[Number(produto.id.replace('produto-', ''))];
-      if (!cartao) return;
-
-      cartao.dataset.productId = produto.id;
-      cartao.querySelector('.sabor-nome').textContent = produto.nome;
-      cartao.querySelector('.sabor-desc').textContent = produto.descricao;
-      const imagem = cartao.querySelector('.card-imagem img');
-      imagem.src = produto.imagem;
-      imagem.alt = `Bolo de pote ${produto.nome}`;
-      cartao.querySelector('.card-detalhes p').textContent = produto.detalhes || produto.descricao;
-    });
-    document.querySelectorAll('.grid-sabores').forEach(grid => {
-      carrosseis.get(grid)?.atualizar();
-    });
-  }
-
-  function criarCampoProduto(rotulo, classe, tipo, valor, identificador) {
-    const campo = document.createElement(tipo === 'textarea' ? 'textarea' : 'input');
-    campo.className = classe;
-    campo.id = identificador;
-    if (tipo !== 'textarea') campo.type = tipo;
-    else campo.rows = 2;
-    if (tipo !== 'file') campo.value = valor;
-    else campo.accept = 'image/*';
-    campo.required = tipo !== 'file';
-    const label = document.createElement('label');
-    label.htmlFor = identificador;
-    label.textContent = rotulo;
-    return { campo, label };
-  }
-
-  function mostrarProdutosNoPainel() {
-    adminProdutosLista.replaceChildren();
-    produtos.forEach((produto, indice) => {
-      const item = document.createElement('fieldset');
-      item.className = 'admin-produto';
-      item.dataset.productId = produto.id;
-      const legenda = document.createElement('legend');
-      legenda.textContent = produto.nome;
-      item.append(legenda);
-      const nome = criarCampoProduto('Nome', 'admin-produto-nome', 'text', produto.nome, `admin-nome-${indice}`);
-      const descricao = criarCampoProduto('Descrição', 'admin-produto-descricao', 'textarea', produto.descricao, `admin-descricao-${indice}`);
-      const imagem = criarCampoProduto('Trocar imagem', 'admin-produto-imagem', 'file', '', `admin-imagem-${indice}`);
-      item.append(nome.label, nome.campo, descricao.label, descricao.campo, imagem.label, imagem.campo);
-      adminProdutosLista.append(item);
-    });
-  }
-
-  function salvarProdutos(atualizados) {
-    try {
-      localStorage.setItem(chaveProdutos, JSON.stringify(atualizados));
-    } catch (erro) {
-      console.error('Não foi possível salvar as alterações dos sabores.', erro);
-      adminStatus.textContent = 'Não foi possível salvar: o armazenamento do navegador pode estar cheio.';
-      return false;
-    }
-
-    produtos = atualizados;
-    aplicarProdutos();
-    mostrarProdutosNoPainel();
-    adminStatus.textContent = 'Alterações salvas neste navegador.';
-    return true;
-  }
-
-  function converterImagem(arquivo) {
-    if (!arquivo || !arquivo.type.startsWith('image/')) {
-      return Promise.reject(new Error('Selecione um arquivo de imagem válido.'));
-    }
-    if (arquivo.size > 5 * 1024 * 1024) {
-      return Promise.reject(new Error('A imagem deve ter no máximo 5 MB.'));
-    }
-
-    const urlTemporaria = URL.createObjectURL(arquivo);
-    return new Promise((resolve, reject) => {
-      const imagem = new Image();
-      imagem.onload = () => {
-        URL.revokeObjectURL(urlTemporaria);
-        const escala = Math.min(1, 1000 / Math.max(imagem.naturalWidth, imagem.naturalHeight));
-        const canvas = document.createElement('canvas');
-        canvas.width = Math.max(1, Math.round(imagem.naturalWidth * escala));
-        canvas.height = Math.max(1, Math.round(imagem.naturalHeight * escala));
-        const contexto = canvas.getContext('2d');
-        if (!contexto) {
-          reject(new Error('Não foi possível processar a imagem neste navegador.'));
-          return;
-        }
-        contexto.drawImage(imagem, 0, 0, canvas.width, canvas.height);
-        resolve(canvas.toDataURL('image/jpeg', 0.82));
-      };
-      imagem.onerror = () => {
-        URL.revokeObjectURL(urlTemporaria);
-        reject(new Error('Não foi possível abrir a imagem selecionada.'));
-      };
-      imagem.src = urlTemporaria;
-    });
-  }
-
-  document.querySelector('#admin-abrir').addEventListener('click', () => {
-    adminLogin.hidden = false;
-    adminPainel.hidden = true;
-    adminLoginMensagem.textContent = '';
-    adminDialog.showModal();
-    document.querySelector('#admin-senha').focus();
-  });
-
-  document.querySelector('#admin-fechar').addEventListener('click', () => adminDialog.close());
-  adminDialog.addEventListener('click', evento => {
-    if (evento.target === adminDialog) adminDialog.close();
-  });
-  adminDialog.addEventListener('close', () => {
-    adminLogin.hidden = false;
-    adminPainel.hidden = true;
-    adminLoginForm.reset();
-  });
-
-  adminLoginForm.addEventListener('submit', evento => {
-    evento.preventDefault();
-    adminLoginMensagem.textContent = 'A autenticação administrativa local foi removida.';
-  });
-
-  adminProdutosForm.addEventListener('submit', async evento => {
-    evento.preventDefault();
-    adminStatus.textContent = 'Salvando alterações...';
-    const atualizados = [];
-    try {
-      for (const item of adminProdutosLista.querySelectorAll('.admin-produto')) {
-        const produto = produtos.find(atual => atual.id === item.dataset.productId);
-        if (!produto) continue;
-        const nome = item.querySelector('.admin-produto-nome').value.trim();
-        const descricao = item.querySelector('.admin-produto-descricao').value.trim();
-        if (!nome || !descricao) throw new Error('Preencha o nome e a descrição de todos os sabores.');
-        const arquivo = item.querySelector('.admin-produto-imagem').files[0];
-        atualizados.push({
-          ...produto,
-          nome,
-          descricao,
-          detalhes: descricao,
-          imagem: arquivo ? await converterImagem(arquivo) : produto.imagem
-        });
-      }
-    } catch (erro) {
-      adminStatus.textContent = erro.message;
-      return;
-    }
-    salvarProdutos(atualizados);
-  });
-
-  adminAdicionar.addEventListener('click', async () => {
-    const nomeCampo = document.querySelector('#admin-novo-nome');
-    const descricaoCampo = document.querySelector('#admin-nova-descricao');
-    const imagemCampo = document.querySelector('#admin-nova-imagem');
-    const nome = nomeCampo.value.trim();
-    const descricao = descricaoCampo.value.trim();
-    if (!nome || !descricao || !imagemCampo.files[0]) {
-      adminStatus.textContent = 'Preencha nome, descrição e selecione uma imagem.';
-      return;
-    }
-
-    adminStatus.textContent = 'Adicionando sabor...';
-    try {
-      const imagem = await converterImagem(imagemCampo.files[0]);
-      const novoProduto = {
-        id: `personalizado-${Date.now()}`,
-        nome,
-        descricao,
-        detalhes: descricao,
-        imagem,
-        personalizado: true
-      };
-      if (salvarProdutos([...produtos, novoProduto])) {
-        nomeCampo.value = '';
-        descricaoCampo.value = '';
-        imagemCampo.value = '';
-      }
-    } catch (erro) {
-      adminStatus.textContent = erro.message;
-    }
-  });
-
-  document.querySelector('#admin-sair').addEventListener('click', () => adminDialog.close());
-  aplicarProdutos();
-  }
 
   /* Smooth scroll para links internos, respeitando redução de movimento. */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
