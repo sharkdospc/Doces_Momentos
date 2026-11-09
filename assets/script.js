@@ -651,6 +651,7 @@
   });
 
   const adminDialog = document.querySelector('#admin-dialog');
+  if (adminDialog) {
   const adminLogin = document.querySelector('#admin-login');
   const adminPainel = document.querySelector('#admin-painel');
   const adminLoginForm = document.querySelector('#admin-login-form');
@@ -660,7 +661,6 @@
   const adminStatus = document.querySelector('#admin-status');
   const adminAdicionar = document.querySelector('#admin-adicionar');
   const chaveProdutos = 'doces-momentos-produtos';
-  const senhaAdministrativa = '140824';
   const cartoesIniciais = [...document.querySelectorAll('.grid-sabores .card-sabor')];
 
   function textoOriginalDo(elemento) {
@@ -857,18 +857,7 @@
 
   adminLoginForm.addEventListener('submit', evento => {
     evento.preventDefault();
-    const senha = new FormData(adminLoginForm).get('password');
-    if (senha !== senhaAdministrativa) {
-      adminLoginMensagem.textContent = 'Senha incorreta. Tente novamente.';
-      adminLoginForm.reset();
-      document.querySelector('#admin-senha').focus();
-      return;
-    }
-    adminLogin.hidden = true;
-    adminPainel.hidden = false;
-    adminLoginMensagem.textContent = '';
-    mostrarProdutosNoPainel();
-    adminStatus.textContent = '';
+    adminLoginMensagem.textContent = 'A autenticação administrativa local foi removida.';
   });
 
   adminProdutosForm.addEventListener('submit', async evento => {
@@ -932,6 +921,7 @@
 
   document.querySelector('#admin-sair').addEventListener('click', () => adminDialog.close());
   aplicarProdutos();
+  }
 
   /* Smooth scroll para links internos, respeitando redução de movimento. */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -955,8 +945,8 @@
      --------------------------------------------------------- */
   console.log(
     '%cDoces Momentos %c— cartas de sabores prontas para descobrir!',
-    'background: #d46b6b; color: white; padding: 4px 8px; border-radius: 4px 0 0 4px; font-weight: bold;',
-    'background: #fde3e3; color: #4a2e2e; padding: 4px 8px; border-radius: 0 4px 4px 0;'
+    'background: #6b3216; color: white; padding: 4px 8px; border-radius: 4px 0 0 4px; font-weight: bold;',
+    'background: #f5e8dc; color: #4a2e2e; padding: 4px 8px; border-radius: 0 4px 4px 0;'
   );
 
 })();
